@@ -1,0 +1,1330 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Latein zum Ausprobieren</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: Terrakotta-Kopfband mit Reitern, darunter Goldmäander und Inhalt auf Pergament-Grund; Karten wie die Zeilen des Plakats. */
+:root{
+  --bg:#F7EFDD; --surface:#FFFBF2; --ink:#3A2A22; --muted:#6E5E54; --line:#DCCBA6;
+  --band:#A93B26; --band-ink:#FFFFFF; --band-soft:#F6DFAF;
+  --accent:#A93B26; --accent-ink:#FFFFFF; --gold:#D9A441; --gold-soft:#F6E3B4;
+  --ok:#2C7A32; --bad:#B3261E; --teal:#2E7D7A; --gtext:#8A5F0E;
+  --display:"Cinzel","Trajan Pro","Times New Roman",serif;
+  --text:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1D1410; --surface:#281B16; --ink:#F3E8D6; --muted:#BFAE98; --line:#4A362B;
+    --band:#7E2A1B; --band-ink:#FFFFFF; --band-soft:#F0D49A;
+    --accent:#E2735A; --accent-ink:#1D1410; --gold:#E3B35A; --gold-soft:#3A2C1B;
+    --ok:#86CC88; --bad:#F2877F; --teal:#6CC3BF; --gtext:#E3B35A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1D1410; --surface:#281B16; --ink:#F3E8D6; --muted:#BFAE98; --line:#4A362B;
+  --band:#7E2A1B; --band-ink:#FFFFFF; --band-soft:#F0D49A;
+  --accent:#E2735A; --accent-ink:#1D1410; --gold:#E3B35A; --gold-soft:#3A2C1B;
+  --ok:#86CC88; --bad:#F2877F; --teal:#6CC3BF; --gtext:#E3B35A; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.55}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{background:var(--band);color:var(--band-ink)}
+.band .wrap{padding-block:28px 0}
+.eyebrow{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--band-soft);font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,6.4vw,3rem);letter-spacing:.04em;line-height:1.1;margin:6px 0 0;text-wrap:balance}
+.lead{max-width:56ch;color:var(--band-soft);margin:10px 0 0}
+.tabs{display:flex;gap:4px;margin-top:22px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;font:600 .95rem var(--text);letter-spacing:.02em;padding:11px 18px;border:0;border-radius:8px 8px 0 0;background:transparent;color:var(--band-soft);cursor:pointer}
+.tab:hover{color:var(--band-ink)}
+.tab[aria-selected="true"]{background:var(--bg);color:var(--accent)}
+.tab:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.meander{display:block;width:100%;height:20px;color:var(--gold);margin-top:18px}
+main{padding-block:10px 40px}
+h2{font-family:var(--display);font-weight:700;font-size:1.2rem;letter-spacing:.05em;margin:0 0 6px;color:var(--accent)}
+.sub{margin:0 0 18px;color:var(--muted);max-width:60ch}
+.card{background:var(--surface);border:1.5px solid var(--gold);border-radius:10px;padding:22px}
+.stack{display:grid;gap:18px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.field{display:block;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+input{font:500 1.5rem/1.2 var(--text);font-variant-numeric:tabular-nums;padding:10px 12px;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;width:100%}
+input:hover{border-color:var(--gold)}
+.dateRow{display:flex;align-items:flex-end;gap:8px}
+.dateRow .f{display:block;min-width:0}
+.dateRow .f.d,.dateRow .f.m{flex:0 1 88px}
+.dateRow .f.y{flex:0 1 130px}
+.dot{font:700 1.7rem/1 var(--display);padding-bottom:12px;color:var(--accent)}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.ex{font:500 .85rem var(--text);padding:6px 12px;background:var(--gold-soft);color:var(--ink);border:1px solid var(--gold);border-radius:999px;cursor:pointer}
+.ex:hover{background:var(--gold);color:#2A1D17}
+.out{margin-top:22px;padding:20px;border-radius:8px;background:var(--bg);border:1.5px dashed var(--gold)}
+.rlabel{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.big{font-family:var(--display);font-weight:700;color:var(--accent);font-size:clamp(1.5rem,6.2vw,3.4rem);letter-spacing:.04em;line-height:1.2;margin:8px 0 4px;overflow-wrap:anywhere;text-wrap:balance}
+.msg{color:var(--bad);font-weight:500;margin:6px 0 0;min-height:1.5em}
+.latin{margin:10px 0 0;color:var(--ink)}
+.latin em{font-family:var(--display);font-style:normal;font-weight:700;letter-spacing:.03em;color:var(--accent)}
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 0;padding:0;list-style:none}
+@media (max-width:520px){.cards3{grid-template-columns:minmax(0,1fr)}}
+.cards3 li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.cards3 .k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.cards3 .r{font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:.04em;color:var(--ink);overflow-wrap:anywhere}
+.cards3 .a{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.parts{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.parts li{min-width:64px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:2px}
+.parts .sym{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:.05em}
+.parts .val{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.sum{margin:14px 0 0;color:var(--muted);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn{font:600 .95rem var(--text);padding:10px 18px;border:1.5px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:6px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:hover{filter:brightness(1.08)}
+.note{font-size:.85rem;color:var(--muted);margin:10px 0 0;min-height:1.3em}
+table.sym{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+table.sym td{padding:9px 8px;border-bottom:1px solid var(--line)}
+table.sym tr:nth-child(even) td{background:var(--bg)}
+table.sym td:first-child{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--accent);width:2.6em}
+table.sym td:last-child{color:var(--muted);font-size:.88rem;text-align:right}
+.rules{margin:0;padding-left:1.1em}
+.rules li+li{margin-top:8px}
+.grid20{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.grid20 li{display:flex;justify-content:space-between;align-items:baseline;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 10px;font-variant-numeric:tabular-nums}
+.grid20 b{font-family:var(--display);letter-spacing:.04em;color:var(--accent)}
+.qhead{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.85rem;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.qtext{font-size:1.05rem;margin:0 0 6px}
+.qbig{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,7vw,3rem);letter-spacing:.05em;margin:0 0 16px;color:var(--accent);overflow-wrap:anywhere}
+.levels{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 0}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:480px){.opts{grid-template-columns:minmax(0,1fr)}}
+.opt{font:600 1.15rem var(--text);font-variant-numeric:tabular-nums;padding:14px 12px;text-align:left;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;cursor:pointer;overflow-wrap:anywhere}
+.opt.rom{font-family:var(--display);letter-spacing:.05em}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt.right{border-color:var(--ok);background:var(--gold-soft);box-shadow:inset 5px 0 0 var(--ok)}
+.opt.wrong{border-color:var(--bad);box-shadow:inset 5px 0 0 var(--bad)}
+.opt:disabled{cursor:default}
+.fb{margin:14px 0 0;min-height:3.2em}
+.fb strong.ok{color:var(--ok)} .fb strong.no{color:var(--bad)}
+.score{font-family:var(--display);font-weight:700;font-size:2.6rem;color:var(--accent);margin:0}
+footer .wrap{padding-block:0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.chip{font:600 .95rem var(--text);padding:8px 14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;cursor:pointer}
+.chip:hover{border-color:var(--gold)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip.lat{font-family:var(--display);letter-spacing:.04em}
+.gp{display:flex;align-items:center;gap:8px;margin:18px 0 8px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.gp i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.dotS{background:var(--accent)} .dotO{background:var(--gtext)} .dotV{background:var(--teal)}
+#chS .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
+#chO .chip[aria-pressed="true"]{background:var(--gtext);border-color:var(--gtext)}
+#chV .chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal)}
+.sentence{display:flex;flex-wrap:wrap;gap:8px;min-height:3.4rem;align-items:center;margin-top:8px}
+.sentence .hint{color:var(--muted);font-size:.9rem}
+.pill{font-family:var(--display);font-weight:700;font-size:clamp(1.05rem,4.6vw,1.5rem);letter-spacing:.04em;padding:8px 16px;border-radius:999px;color:var(--accent-ink)}
+.pill.S{background:var(--accent)} .pill.O{background:var(--gtext)} .pill.V{background:var(--teal)}
+.big.sm{font-family:var(--text);font-weight:600;font-size:clamp(1.1rem,4.6vw,1.6rem);letter-spacing:0;color:var(--ink);margin:12px 0 0}
+.tree{list-style:none;margin:16px 0 0 10px;padding:0 0 0 20px;border-left:2px solid var(--gold);display:grid;gap:8px}
+.tree li{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0}
+.tree li::before{content:"";position:absolute;left:-22px;top:50%;width:20px;height:2px;background:var(--gold)}
+.tree .ln{color:var(--muted);font-size:.9rem;flex:0 0 auto}
+.tree .lw{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:.04em;text-align:right;overflow-wrap:anywhere}
+.tree .lw .k{color:var(--accent)}
+.tree .lw .x{color:var(--muted);font-weight:500}
+.tree .lw.none{font:500 .9rem var(--text);color:var(--muted);letter-spacing:0}
+.cardhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+.cardhead h2{margin:0}
+.btn.sm{padding:6px 12px;font-size:.85rem}
+footer .actions{margin:0 0 10px}
+.me{margin-top:18px;display:grid;gap:8px}
+.mlabel{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--band-soft);font-weight:600}
+.mrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.mrow input{width:min(100%,260px);font:600 1.15rem/1.2 var(--text);padding:10px 14px;border:0;border-radius:8px;background:var(--bg);color:var(--ink)}
+.mrow input::placeholder{color:var(--muted);font-weight:400}
+.mrow .chip{background:transparent;color:var(--band-soft);border-color:rgba(246,223,175,.55)}
+.mrow .chip:hover{border-color:var(--band-soft)}
+.mrow .chip[aria-pressed="true"]{background:var(--band-soft);color:var(--band);border-color:var(--band-soft)}
+.mlat{margin:0;color:var(--band-soft);font-size:.92rem;min-height:1.5em}
+.mlat em{font-family:var(--display);font-style:normal;font-weight:700;color:var(--band-ink);letter-spacing:.03em}
+.chip.mine{border-style:dashed;border-color:var(--gold)}
+body{font-size:1rem}
+.rally{margin-top:16px;display:grid;gap:8px}
+.rtext{margin:0;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--band-soft);font-weight:600}
+.stations{display:flex;flex-wrap:wrap;gap:6px}
+.st{font:600 .82rem var(--text);padding:5px 11px 5px 9px;border-radius:999px;border:1.5px solid rgba(246,223,175,.55);background:transparent;color:var(--band-soft);cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.st i{width:9px;height:9px;border-radius:50%;border:1.5px solid currentColor;display:inline-block}
+.st:hover{border-color:var(--band-soft)}
+.st.done{background:var(--band-soft);color:var(--band);border-color:var(--band-soft)}
+.st.done i{background:var(--band);border-color:var(--band)}
+.rmsg{margin:0;color:var(--band-ink);font-weight:600;font-size:.92rem;min-height:1.4em}
+.tab.set{margin-left:auto}
+.gv{margin-top:18px}
+.big.sm2{font-size:clamp(1.15rem,5vw,2rem);letter-spacing:.03em}
+.infos p{margin:8px 0 0;color:var(--muted);font-size:.92rem}
+.pv{margin:6px 0 4px}
+.pv .chip{font-size:1.1rem;padding:9px 16px}
+.pvm{min-height:1.6em;margin:12px 0 0}
+a.btn{display:inline-block;text-decoration:none}
+.cert{background:var(--surface);border:3px double var(--gold);border-radius:6px;padding:14px 22px 10px;text-align:center}
+.ceyebrow{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:10px}
+.ctitle{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,6.4vw,2.6rem);letter-spacing:.06em;color:var(--accent);margin-top:6px}
+.cwho{margin:10px auto 0;max-width:46ch;color:var(--ink)}
+.cname{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,6.6vw,3rem);letter-spacing:.04em;margin:12px 0;overflow-wrap:anywhere;text-wrap:balance}
+.clines{list-style:none;margin:0 auto;padding:0;display:grid;gap:4px;max-width:46ch;color:var(--muted);font-size:.95rem}
+.cfoot{margin:14px 0 4px;color:var(--muted);font-size:.85rem;font-style:italic}
+.note.strong{color:var(--ink);font-weight:500}
+.det{margin-top:14px}
+.det summary{cursor:pointer;color:var(--accent);font-weight:600}
+.det textarea{width:100%;margin-top:10px;font:400 .88rem/1.5 var(--text);padding:10px 12px;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;resize:vertical}
+.pwrow{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
+.pwrow input{max-width:240px}
+:root.large{font-size:120%}
+.idle{position:fixed;left:0;right:0;bottom:0;background:var(--accent);color:var(--accent-ink);padding-top:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));text-align:center;font-weight:600;z-index:20}
+.certwrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+.certwrap img{display:block;width:100%;max-width:560px;height:auto;aspect-ratio:1240/1754;background:var(--bg);border:1px solid var(--line);box-shadow:0 6px 24px rgba(58,42,34,.18)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:.92rem;color:var(--ink);cursor:pointer}
+.chk input{width:1.25rem;height:1.25rem;padding:0;margin:.15rem 0 0;flex:0 0 auto;accent-color:var(--accent)}
+@media (prefers-reduced-motion: no-preference){.big,.cards3 li,.parts li{animation:in .25s ease-out}}
+@keyframes in{from{opacity:.2;transform:translateY(3px)}to{opacity:1;transform:none}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <pattern id="mp" width="24" height="20" patternUnits="userSpaceOnUse"><path d="M0 20V0H20V16H8V8H12M20 20H24" fill="none" stroke="#D9A441" stroke-width="1.6"/></pattern>
+</defs></svg>
+
+<div class="band">
+  <div class="wrap">
+    <span class="eyebrow">Fremdsprachen · Latein</span>
+    <h1>Latein zum Ausprobieren</h1>
+    <p class="lead">Schreibe dein Datum in römischen Zahlen, finde deinen römischen Namen, baue lateinische Sätze und löse die sechs Stationen der Rallye. Am Ende wartet eine Urkunde.</p>
+    <div class="me">
+      <label class="mlabel" for="nameIn">Dein Vorname</label>
+      <div class="mrow">
+        <input id="nameIn" type="text" autocomplete="off" spellcheck="false" maxlength="20" placeholder="z. B. Lena">
+        <div class="chips" role="group" aria-label="Endung deines lateinischen Namens">
+          <button class="chip" type="button" id="fM" aria-pressed="true">männlich</button>
+          <button class="chip" type="button" id="fW" aria-pressed="false">weiblich</button>
+        </div>
+      </div>
+      <p class="mlat" id="nameLat" aria-live="polite"></p>
+    </div>
+    <div class="rally">
+      <p class="rtext" id="rText"></p>
+      <div class="stations" id="stations" role="group" aria-label="Stationen der Rallye"></div>
+      <p class="rmsg" id="rMsg"></p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Bereiche">
+      <button class="tab" role="tab" id="t-geburtstag" aria-controls="p-geburtstag" aria-selected="true" data-tab="geburtstag">Geburtstag</button>
+      <button class="tab" role="tab" id="t-zahlen" aria-controls="p-zahlen" aria-selected="false" data-tab="zahlen" tabindex="-1">Zahlen</button>
+      <button class="tab" role="tab" id="t-name" aria-controls="p-name" aria-selected="false" data-tab="name" tabindex="-1">Name</button>
+      <button class="tab" role="tab" id="t-satzbau" aria-controls="p-satzbau" aria-selected="false" data-tab="satzbau" tabindex="-1">Satzbau</button>
+      <button class="tab" role="tab" id="t-sprachen" aria-controls="p-sprachen" aria-selected="false" data-tab="sprachen" tabindex="-1">Sprachen</button>
+      <button class="tab" role="tab" id="t-kalender" aria-controls="p-kalender" aria-selected="false" data-tab="kalender" tabindex="-1">Kalender</button>
+      <button class="tab" role="tab" id="t-sprueche" aria-controls="p-sprueche" aria-selected="false" data-tab="sprueche" tabindex="-1">Sprüche</button>
+      <button class="tab" role="tab" id="t-quiz" aria-controls="p-quiz" aria-selected="false" data-tab="quiz" tabindex="-1">Spiele</button>
+      <button class="tab" role="tab" id="t-zeichen" aria-controls="p-zeichen" aria-selected="false" data-tab="zeichen" tabindex="-1">Zeichen</button>
+      <button class="tab" role="tab" id="t-urkunde" aria-controls="p-urkunde" aria-selected="false" data-tab="urkunde" tabindex="-1">Urkunde</button>
+      <button class="tab set" role="tab" id="t-einstellungen" aria-controls="p-einstellungen" aria-selected="false" data-tab="einstellungen" tabindex="-1">Einstellungen</button>
+    </div>
+  </div>
+</div>
+<div class="wrap mdiv"><svg class="meander" aria-hidden="true"><rect width="100%" height="20" fill="url(#mp)"/></svg></div>
+
+<main class="wrap">
+  <section role="tabpanel" id="p-geburtstag" aria-labelledby="t-geburtstag" class="stack">
+    <div class="card">
+      <h2>Dein Geburtstag auf Römisch</h2>
+      <p class="sub">Trag Tag, Monat und Jahr ein. Die Punkte setzen wir dazwischen, so wie du das Datum auch schreibst.</p>
+      <div class="dateRow">
+        <label class="f d"><span class="field">Tag</span><input id="dd" inputmode="numeric" maxlength="2" autocomplete="off" value="10"></label>
+        <span class="dot" aria-hidden="true">.</span>
+        <label class="f m"><span class="field">Monat</span><input id="mm" inputmode="numeric" maxlength="2" autocomplete="off" value="10"></label>
+        <span class="dot" aria-hidden="true">.</span>
+        <label class="f y"><span class="field">Jahr</span><input id="yy" inputmode="numeric" maxlength="4" autocomplete="off" value="2026"></label>
+      </div>
+      <div class="out" aria-live="polite">
+        <div class="rlabel">römisch</div>
+        <div class="big" id="dOut">X. X. MMXXVI</div>
+        <p class="msg" id="dMsg"></p>
+        <p class="latin" id="dLat"></p>
+        <ul class="cards3" id="dCards"></ul>
+        <div class="actions"><button class="btn ghost" type="button" id="rstGeb">Zurücksetzen</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-zahlen" aria-labelledby="t-zahlen" class="stack" hidden>
+    <div class="card">
+      <h2>Zahlen umrechnen</h2>
+      <p class="sub">Tippe eine Zahl von 1 bis 3999 ein oder römische Zeichen. Der Umrechner erkennt selbst, was du meinst.</p>
+      <label class="field" for="zahl">Zahl oder römische Zahl</label>
+      <input id="zahl" type="text" autocomplete="off" spellcheck="false" value="2026" aria-describedby="meldung">
+      <ul class="examples" aria-label="Beispiele">
+        <li><button class="ex" type="button" data-v="753">753 · Rom wird gegründet (Sage)</button></li>
+        <li><button class="ex" type="button" data-v="44">44 · Caesar stirbt</button></li>
+        <li><button class="ex" type="button" data-v="476">476 · Ende Westroms</button></li>
+        <li><button class="ex" type="button" data-v="2026">2026 · dieses Jahr</button></li>
+      </ul>
+      <div class="out" aria-live="polite">
+        <div class="rlabel" id="rlabel">römisch</div>
+        <div class="big" id="out">MMXXVI</div>
+        <p class="msg" id="meldung"></p>
+        <ul class="parts" id="teile"></ul>
+        <p class="sum" id="rechnung"></p>
+        <div class="actions"><button class="btn ghost" type="button" id="rstZahl">Zurücksetzen</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-name" aria-labelledby="t-name" class="stack" hidden>
+    <div class="card">
+      <h2>Dein römischer Name</h2>
+      <p class="sub">Die Römer hatten oft drei Namen: Vorname, Familienname und Beiname. Der Beiname war oft ein Spitzname. Dein Vorname von oben wird hier dein Beiname, die anderen beiden würfeln wir.</p>
+      <div class="out" aria-live="polite">
+        <div class="rlabel">dein römischer Name</div>
+        <div class="big" id="nOut">–</div>
+        <p class="msg" id="nMsg"></p>
+        <ul class="cards3" id="nCards"></ul>
+        <div class="rlabel" style="margin-top:20px">dein Name in drei Fällen</div>
+        <ul class="cards3" id="nCases"></ul>
+        <p class="note" id="nNote"></p>
+        <div class="actions">
+          <button class="btn" type="button" id="reroll">Anders würfeln</button>
+          <button class="btn ghost" type="button" id="rstName">Zurücksetzen</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-sprachen" aria-labelledby="t-sprachen" class="stack" hidden>
+    <div class="card">
+      <h2>Latein ist die Mutter</h2>
+      <p class="sub">Aus dem Latein sind Italienisch, Spanisch, Französisch, Portugiesisch und Rumänisch entstanden. Such dir ein Wort aus und sieh, wie es sich verändert hat. Farbige Buchstaben sind aus dem Latein geblieben.</p>
+      <div class="chips" id="wordChips" role="group" aria-label="Wort wählen"></div>
+      <div class="actions"><button class="btn ghost" type="button" id="rndWord">Zufälliges Wort</button></div>
+      <div class="out">
+        <div class="rlabel">lateinisch</div>
+        <div class="big" id="laWord">aqua</div>
+        <p class="latin" id="laDe"></p>
+        <ul class="tree" id="tree"></ul>
+        <p class="latin" id="dtLine"></p>
+      </div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-satzbau" aria-labelledby="t-satzbau" class="stack" hidden>
+    <div class="card">
+      <h2>Bau einen lateinischen Satz</h2>
+      <p class="sub">Tippe drei Wörter an: eines für wer?, eines für wen? und ein Verb. In welcher Reihenfolge du sie antippst, ist egal. Die Endungen verraten, wer was tut.</p>
+      <div class="gp"><i class="dotS"></i>wer? (Subjekt)</div>
+      <div class="chips" id="chS"></div>
+      <div class="gp"><i class="dotO"></i>wen? (Objekt)</div>
+      <div class="chips" id="chO"></div>
+      <div class="gp"><i class="dotV"></i>tut was? (Verb)</div>
+      <div class="chips" id="chV"></div>
+      <div class="out" aria-live="polite">
+        <div class="rlabel">dein Satz</div>
+        <div class="sentence" id="sentence"></div>
+        <p class="big sm" id="sTrans"></p>
+        <p class="latin" id="sOrder"></p>
+        <div class="actions">
+          <button class="btn" type="button" id="shuf">Reihenfolge mischen</button>
+          <button class="btn ghost" type="button" id="clr">Zurücksetzen</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-kalender" aria-labelledby="t-kalender" class="stack" hidden>
+    <div class="card">
+      <h2>Römischer Kalender</h2>
+      <p class="sub">Die Römer sagten nicht „10. Oktober“. Sie zählten rückwärts bis zum nächsten Fixpunkt: den Kalenden (der 1. des Monats), den Nonen (der 5. oder 7.) und den Iden (der 13. oder 15.). Den Schalttag zählt diese Seite einfach durch.</p>
+      <div class="dateRow">
+        <label class="f d"><span class="field">Tag</span><input id="kd" inputmode="numeric" maxlength="2" autocomplete="off" value="15"></label>
+        <span class="dot" aria-hidden="true">.</span>
+        <label class="f m"><span class="field">Monat</span><input id="km" inputmode="numeric" maxlength="2" autocomplete="off" value="3"></label>
+        <span class="dot" aria-hidden="true">.</span>
+        <label class="f y"><span class="field">Jahr</span><input id="ky" inputmode="numeric" maxlength="4" autocomplete="off" value="2026"></label>
+      </div>
+      <ul class="examples" aria-label="Beispiele">
+        <li><button class="ex" type="button" id="kCaesar">15. März · Caesar</button></li>
+        <li><button class="ex" type="button" id="kToday">Heute</button></li>
+        <li><button class="ex" type="button" id="kBirth">Mein Geburtstag</button></li>
+      </ul>
+      <div class="out" aria-live="polite">
+        <div class="rlabel">auf Latein</div>
+        <div class="big sm2" id="kOut">–</div>
+        <p class="latin" id="kAbbr"></p>
+        <p class="latin" id="kDe"></p>
+        <p class="msg" id="kMsg"></p>
+        <div id="kInfo" class="infos"></div>
+      </div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-sprueche" aria-labelledby="t-sprueche" class="stack" hidden>
+    <div class="card">
+      <h2>Lateinische Sprüche</h2>
+      <p class="sub">Tippe die Wörter an und sieh, was sie bedeuten. Dann kannst du die ganze Übersetzung aufdecken.</p>
+      <div class="qhead"><span id="pvNr"></span><span id="pvCount"></span></div>
+      <div class="chips pv" id="pv" role="group" aria-label="Wörter des Spruchs"></div>
+      <p class="latin pvm" id="pvMean" aria-live="polite"></p>
+      <div class="actions">
+        <button class="btn" type="button" id="pvFull">Ganze Übersetzung</button>
+        <button class="btn ghost" type="button" id="pvNext">Nächster Spruch</button>
+        <button class="btn ghost" type="button" id="pvRnd">Zufällig</button>
+      </div>
+      <p class="big sm" id="pvDe"></p>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-quiz" aria-labelledby="t-quiz" class="stack" hidden>
+    <div class="card">
+      <div class="cardhead"><h2>Spiele</h2><button class="btn ghost sm" type="button" id="rstQuiz">Zurücksetzen</button></div>
+      <div class="chips" id="gameChips" role="group" aria-label="Spiel wählen">
+        <button class="chip" type="button" data-g="zahlen" aria-pressed="true">Zahlen-Quiz</button>
+        <button class="chip" type="button" data-g="rechnen" aria-pressed="false">Römisch rechnen</button>
+        <button class="chip" type="button" data-g="wort" aria-pressed="false">Fremdwörter</button>
+        <button class="chip" type="button" data-g="gott" aria-pressed="false">Götter und Wochentage</button>
+      </div>
+      <div class="gv" id="gv-zahlen"><div id="quiz"></div></div>
+      <div class="gv" id="gv-rechnen" hidden></div>
+      <div class="gv" id="gv-wort" hidden></div>
+      <div class="gv" id="gv-gott" hidden></div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-zeichen" aria-labelledby="t-zeichen" class="stack" hidden>
+    <div class="two">
+      <div class="card">
+        <h2>Die sieben Zeichen</h2>
+        <table class="sym">
+          <tr><td>I</td><td>1</td><td>ein Strich</td></tr>
+          <tr><td>V</td><td>5</td><td>eine Hand</td></tr>
+          <tr><td>X</td><td>10</td><td>zwei Hände</td></tr>
+          <tr><td>L</td><td>50</td><td></td></tr>
+          <tr><td>C</td><td>100</td><td>centum</td></tr>
+          <tr><td>D</td><td>500</td><td></td></tr>
+          <tr><td>M</td><td>1000</td><td>mille</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Die Regeln</h2>
+        <ul class="rules">
+          <li>Gleiche Zeichen werden addiert: XXX ist 30.</li>
+          <li>Ein kleineres Zeichen vor einem größeren wird abgezogen: IV ist 4, XC ist 90.</li>
+          <li>Dasselbe Zeichen steht höchstens dreimal hintereinander.</li>
+          <li>Eine Null gab es nicht.</li>
+          <li>Auf vielen Turmuhren steht IIII statt IV.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Die ersten zwanzig</h2>
+      <ul class="grid20" id="grid20"></ul>
+    </div>
+  </section>
+  <section role="tabpanel" id="p-urkunde" aria-labelledby="t-urkunde" class="stack" hidden>
+    <div class="card">
+      <h2>Deine Urkunde</h2>
+      <div class="certwrap">
+        <img id="certImg" alt="Deine Urkunde als Bild" width="620" height="877">
+        <p class="note" id="certBusy">Die Urkunde wird gezeichnet …</p>
+      </div>
+      <div class="actions">
+        <button class="btn" type="button" id="dlPdf">Als PDF speichern</button>
+        <button class="btn ghost" type="button" id="dlPng">Als Bild speichern</button>
+      </div>
+      <p class="note" id="dlMsg" role="status"></p>
+      <p class="note" id="backBox" hidden><a id="backLink" href="./">Zur Seite „Latein zum Ausprobieren“</a></p>
+    </div>
+    <div class="card" id="mailCard">
+      <h2>Urkunde per E-Mail verschicken</h2>
+      <p class="sub">Die Urkunde hängt als PDF an der Mail. Du verschickst sie selbst mit deinem Mail-Programm.</p>
+      <div class="actions"><button class="btn" type="button" id="shareBtn" hidden>Mail mit PDF-Anhang erstellen</button></div>
+      <p class="note" id="shareHint" hidden>Es öffnet sich die Auswahl deines Geräts. Wähle dort dein Mail-Programm. Das PDF ist schon angehängt, die Adresse trägst du dort ein.</p>
+      <label class="field" for="vMail" id="vMailLabel" style="margin-top:20px">Empfänger-Adresse (für den Mail-Entwurf)</label>
+      <input id="vMail" type="email" inputmode="email" autocomplete="off" spellcheck="false" maxlength="80" placeholder="name@beispiel.de">
+      <div class="actions"><button class="btn ghost" type="button" id="draftBtn">Mail-Entwurf öffnen und PDF speichern</button></div>
+      <p class="note" id="draftHint">Der Entwurf kann keinen Dateianhang enthalten. Das PDF wird gleichzeitig gespeichert. Hänge es im Mail-Programm an (Büroklammer).</p>
+      <p class="msg" id="vMsg" role="status"></p>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-einstellungen" aria-labelledby="t-einstellungen" class="stack" hidden>
+    <div class="card" id="lock">
+      <h2>Einstellungen</h2>
+      <p class="sub">Bitte Passwort mit 6 Stellen eingeben.</p>
+      <form id="lockForm" autocomplete="off">
+        <label class="field" for="pw">Passwort</label>
+        <div class="pwrow">
+          <input id="pw" type="password" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="6 Stellen" aria-describedby="pwMsg">
+          <button class="btn" type="submit">Öffnen</button>
+        </div>
+        <p class="msg" id="pwMsg" role="alert"></p>
+      </form>
+    </div>
+    <div id="setBox" class="stack" hidden>
+      <div class="card">
+        <h2>Zugang gewährt</h2>
+        <p class="sub" id="pwOk">Die sechs Stellen waren nur ein Scherz. 123 hat gereicht.</p>
+        <div class="actions"><button class="btn ghost" type="button" id="relock">Wieder sperren</button></div>
+      </div>
+      <div class="card">
+        <h2>Urkunde</h2>
+        <label class="field" for="sIssuer">Aussteller (steht auf der Urkunde)</label>
+        <input id="sIssuer" type="text" maxlength="40" autocomplete="off" placeholder="z. B. Fachschaft Latein">
+        <label class="field" for="sMail" style="margin-top:16px">Absender-E-Mail (steht auf der Urkunde und im Mailtext)</label>
+        <input id="sMail" type="email" inputmode="email" maxlength="80" autocomplete="off" spellcheck="false" placeholder="name@schule.de">
+        <p class="msg" id="sMsg"></p>
+        <p class="note">Die Seite nennt diese Adresse nur als Kontakt auf der Urkunde.</p>
+      </div>
+      <div class="card">
+        <h2>Stand</h2>
+        <span class="field">Automatisch zurücksetzen nach Pause</span>
+        <div class="chips" id="idleChips" role="group" aria-label="Pause bis zum Zurücksetzen">
+          <button class="chip" type="button" data-min="0" aria-pressed="false">Aus</button>
+          <button class="chip" type="button" data-min="1" aria-pressed="false">1 Minute</button>
+          <button class="chip" type="button" data-min="2" aria-pressed="true">2 Minuten</button>
+          <button class="chip" type="button" data-min="5" aria-pressed="false">5 Minuten</button>
+        </div>
+        <span class="field" style="margin-top:16px">Anzeige</span>
+        <div class="chips"><button class="chip" type="button" id="sLarge" aria-pressed="false">Großer Anzeigemodus</button></div>
+        <p class="note">Die Einstellungen bleiben auf diesem Gerät gespeichert.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="wrap mdiv"><svg class="meander" aria-hidden="true"><rect width="100%" height="20" fill="url(#mp)"/></svg></div>
+<div class="idle" id="idleWarn" hidden role="status" aria-live="polite">Die Seite wird in <span id="idleSec">15</span> Sekunden zurückgesetzt. Tippe irgendwo, um weiterzumachen.</div>
+<footer><div class="wrap"><div class="actions"><button class="btn ghost" type="button" id="rstAll">Alles zurücksetzen</button></div><p class="note">Setzt alle Reiter für die nächste Person zurück. Römische Zahlen im einfachen System reichen bis 3999.</p></div></footer>
+<script>
+const MAP=[["M",1000],["CM",900],["D",500],["CD",400],["C",100],["XC",90],["L",50],["XL",40],["X",10],["IX",9],["V",5],["IV",4],["I",1]];
+const SUB={IV:"5 − 1",IX:"10 − 1",XL:"50 − 10",XC:"100 − 10",CD:"500 − 100",CM:"1000 − 100"};
+function toRoman(n){let s="";for(const [r,v] of MAP){while(n>=v){s+=r;n-=v}}return s}
+function tokens(n){const t=[];for(const [r,v] of MAP){while(n>=v){t.push([r,v]);n-=v}}return t}
+const RX=/^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
+function fromRoman(s){s=s.trim().toUpperCase();if(!s||!RX.test(s))return null;let n=0;for(const [r,v] of MAP){while(s.startsWith(r)){n+=v;s=s.slice(r.length)}}return n}
+function explain(n){const t=tokens(n);return toRoman(n)+" = "+t.map(x=>x[0]).join(" + ")+(t.length>1?" = "+t.map(x=>x[1]).join(" + "):"")+" = "+n}
+const LAT_MONTHS=["Ianuarius","Februarius","Martius","Aprilis","Maius","Iunius","Iulius","Augustus","September","October","November","December"];
+const LAT_DAYS=["dies Solis","dies Lunae","dies Martis","dies Mercurii","dies Iovis","dies Veneris","dies Saturni"];
+const DE_DAYS=["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+function dim(m,y){if(m===2)return((y%4===0&&y%100!==0)||y%400===0)?29:28;return[4,6,9,11].includes(m)?30:31}
+function dateProblem(d,m,y){
+  if(!Number.isInteger(d)||!Number.isInteger(m)||!Number.isInteger(y))return "Trag Tag, Monat und Jahr ein.";
+  if(y<1||y>3999)return "Das Jahr muss zwischen 1 und 3999 liegen.";
+  if(m<1||m>12)return "Den Monat gibt es nicht. Er liegt zwischen 1 und 12.";
+  if(d<1||d>dim(m,y))return "Diesen Tag gibt es in diesem Monat nicht.";
+  return null;
+}
+function weekday(d,m,y){const dt=new Date(Date.UTC(2000,0,1));dt.setUTCFullYear(y,m-1,d);return dt.getUTCDay()}
+function fmtDate(d,m,y){return toRoman(d)+". "+toRoman(m)+". "+toRoman(y)}
+/* ---------- Name ---------- */
+const PRAE=["Marcus","Gaius","Lucius","Quintus","Titus","Publius","Decimus","Sextus","Aulus"];
+const GENS=[["Cornelius","Cornelia"],["Iulius","Iulia"],["Valerius","Valeria"],["Claudius","Claudia"],["Flavius","Flavia"],["Aurelius","Aurelia"],["Fabius","Fabia"],["Antonius","Antonia"],["Aemilius","Aemilia"],["Livius","Livia"],["Tullius","Tullia"],["Domitius","Domitia"]];
+function hash32(str,salt){let x=(2166136261^Math.imul(salt+1,16777619))>>>0;for(const ch of str){x=Math.imul(x^ch.codePointAt(0),16777619)>>>0}return x>>>0}
+function firstToken(raw){return raw.trim().split(/[\s-]+/)[0]||""}
+function normName(raw){
+  const s=firstToken(raw).replace(/[äÄ]/g,"ae").replace(/[öÖ]/g,"oe").replace(/[üÜ]/g,"ue").replace(/ß/g,"ss").normalize("NFD").replace(/[^A-Za-z]/g,"").toLowerCase().slice(0,20);
+  return s.replace(/ck/g,"c").replace(/j/g,"i").replace(/k/g,"c").replace(/w/g,"v").replace(/y/g,"i");
+}
+function displayName(raw){const f=firstToken(raw).replace(/[^\p{L}]/gu,"").slice(0,20);return f?f[0].toUpperCase()+f.slice(1):""}
+function cap(s){return s[0].toUpperCase()+s.slice(1)}
+function guessFemale(raw){return /[aei]$/.test(normName(raw))}
+function latinName(raw,female){
+  const s=normName(raw);if(s.length<2)return null;
+  let nom,acc,gen;
+  if(female){nom=s.endsWith("a")?s:s.endsWith("e")?s.slice(0,-1)+"a":s+"a";acc=nom+"m";gen=nom+"e"}
+  else if(s.endsWith("us")){nom=s;acc=s.slice(0,-2)+"um";gen=s.slice(0,-2)+"i"}
+  else if(s.endsWith("as")){nom=s;acc=s.slice(0,-1)+"m";gen=s.slice(0,-1)+"e"}
+  else if(s.endsWith("a")){nom=s;acc=s+"m";gen=s+"e"}
+  else{nom=s+"us";acc=s+"um";gen=s+"i"}
+  return {nom:cap(nom),acc:cap(acc),gen:cap(gen),female:!!female,de:displayName(raw)};
+}
+function romanFull(me,salt){
+  const x=hash32(me.nom.toLowerCase(),salt);
+  const g=GENS[(x>>>7)%GENS.length];
+  if(me.female)return {prae:null,gens:g[1],cogn:me.nom,full:g[1]+" "+me.nom};
+  const p=PRAE[x%PRAE.length];
+  return {prae:p,gens:g[0],cogn:me.nom,full:p+" "+g[0]+" "+me.nom};
+}
+/* ---------- Sprachen ---------- */
+const LANGS=[["it","Italienisch"],["es","Spanisch"],["fr","Französisch"],["pt","Portugiesisch"],["ro","Rumänisch"]];
+const WORDS=[
+ {de:"Wasser",la:"aqua",it:"acqua",es:"agua",fr:"eau",pt:"água",ro:"apă"},
+ {de:"Nacht",la:"nox",it:"notte",es:"noche",fr:"nuit",pt:"noite",ro:"noapte"},
+ {de:"Mond",la:"luna",it:"luna",es:"luna",fr:"lune",pt:"lua",ro:"lună"},
+ {de:"Sonne",la:"sol",it:"sole",es:"sol",fr:"soleil",pt:"sol",ro:"soare"},
+ {de:"Stern",la:"stella",it:"stella",es:"estrella",fr:"étoile",pt:"estrela",ro:"stea"},
+ {de:"Brot",la:"panis",it:"pane",es:"pan",fr:"pain",pt:"pão",ro:"pâine"},
+ {de:"Wein",la:"vinum",it:"vino",es:"vino",fr:"vin",pt:"vinho",ro:"vin"},
+ {de:"Freund",la:"amicus",it:"amico",es:"amigo",fr:"ami",pt:"amigo",ro:"amic"},
+ {de:"Mutter",la:"mater",it:"madre",es:"madre",fr:"mère",pt:"mãe",ro:null},
+ {de:"acht",la:"octo",it:"otto",es:"ocho",fr:"huit",pt:"oito",ro:"opt"}
+];
+function uniqueForms(){
+  const res=[];
+  for(const w of WORDS)for(const [k] of LANGS){
+    const f=w[k];if(!f)continue;
+    const clash=LANGS.some(([k2])=>k2!==k&&w[k2]&&w[k2].toLowerCase()===f.toLowerCase());
+    if(!clash)res.push({w,k,form:f});
+  }
+  return res;
+}
+/* ---------- Satzbau ---------- */
+const NOM={puella:"das Mädchen",puer:"der Junge",magistra:"die Lehrerin",discipulus:"der Schüler"};
+const ACC={puellam:"das Mädchen",puerum:"den Jungen",magistram:"die Lehrerin",discipulum:"den Schüler"};
+const VERB={videt:"sieht",laudat:"lobt",vocat:"ruft"};
+let meNom=null,meAcc=null;
+function setMeWords(me){
+  if(meNom){delete NOM[meNom];delete ACC[meAcc]}
+  meNom=meAcc=null;
+  if(me){NOM[me.nom]=me.de;ACC[me.acc]=me.de;meNom=me.nom;meAcc=me.acc}
+}
+function role(w){return w in NOM?"S":w in ACC?"O":w in VERB?"V":null}
+const ROLE_DE={S:"Subjekt",O:"Objekt",V:"Verb"};
+function translate(words){
+  if(words.length<3)return {state:"need"};
+  const c={S:[],O:[],V:[]};for(const w of words)c[role(w)].push(w);
+  if(c.S.length!==1||c.O.length!==1||c.V.length!==1)return {state:"bad"};
+  const t=NOM[c.S[0]]+" "+VERB[c.V[0]]+" "+ACC[c.O[0]]+".";
+  return {state:"ok",text:t[0].toUpperCase()+t.slice(1),order:words.map(w=>ROLE_DE[role(w)]).join(" – ")};
+}
+
+const DT={aqua:"Aquarium, Aquädukt, Aquarell",nox:"Nocturne",luna:"lunar",sol:"Solarium, Solarenergie",stella:"Konstellation, stellar",panis:"Kumpan und englisch companion (wörtlich: Brotgenosse)",vinum:"Vinothek",amicus:"englisch amicable (freundlich)",mater:"maternal (mütterlich)",octo:"Oktober (früher der achte Monat des römischen Jahres), Oktave"};
+function baseCh(ch){return ch.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()}
+function matchMask(lat,word){
+  const a=[...lat].map(baseCh),b=[...word].map(baseCh),n=a.length,m=b.length;
+  const dp=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+  for(let i=1;i<=n;i++)for(let j=1;j<=m;j++)dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]+1:Math.max(dp[i-1][j],dp[i][j-1]);
+  const mask=new Array(m).fill(false);let i=n,j=m;
+  while(i>0&&j>0){if(a[i-1]===b[j-1]){mask[j-1]=true;i--;j--}else if(dp[i-1][j]>=dp[i][j-1])i--;else j--}
+  return mask;
+}
+/* ---------- Römischer Kalender ---------- */
+const MON_ABL=["Ianuariis","Februariis","Martiis","Aprilibus","Maiis","Iuniis","Iuliis","Augustis","Septembribus","Octobribus","Novembribus","Decembribus"];
+const MON_ACC=["Ianuarias","Februarias","Martias","Apriles","Maias","Iunias","Iulias","Augustas","Septembres","Octobres","Novembres","Decembres"];
+const MON_ABBR=["Ian.","Febr.","Mart.","Apr.","Mai.","Iun.","Iul.","Aug.","Sept.","Oct.","Nov.","Dec."];
+const MON_DE=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+function nonesIdes(m){const long=[3,5,7,10].includes(m);return {nonae:long?7:5,idus:long?15:13}}
+function romanDate(d,m,y){
+  const {nonae,idus}=nonesIdes(m);
+  if(d===1)return {lat:"Kalendis "+MON_ABL[m-1],abbr:"Kal. "+MON_ABBR[m-1],de:"an den Kalenden im "+MON_DE[m-1]+" (der erste Tag des Monats)"};
+  if(d===nonae)return {lat:"Nonis "+MON_ABL[m-1],abbr:"Non. "+MON_ABBR[m-1],de:"an den Nonen im "+MON_DE[m-1]};
+  if(d===idus)return {lat:"Idibus "+MON_ABL[m-1],abbr:"Id. "+MON_ABBR[m-1],de:"an den Iden im "+MON_DE[m-1]};
+  let mk,mkAbbr,mkDe,count,accM,abbrM,deM;
+  if(d<nonae){mk="Nonas";mkAbbr="Non.";mkDe="Nonen";count=nonae-d+1;accM=MON_ACC[m-1];abbrM=MON_ABBR[m-1];deM=MON_DE[m-1]}
+  else if(d<idus){mk="Idus";mkAbbr="Id.";mkDe="Iden";count=idus-d+1;accM=MON_ACC[m-1];abbrM=MON_ABBR[m-1];deM=MON_DE[m-1]}
+  else{const nm=m%12+1;mk="Kalendas";mkAbbr="Kal.";mkDe="Kalenden";count=dim(m,y)-d+2;accM=MON_ACC[nm-1];abbrM=MON_ABBR[nm-1];deM=MON_DE[nm-1]}
+  if(count===2)return {lat:"pridie "+mk+" "+accM,abbr:"pr. "+mkAbbr+" "+abbrM,de:"der Tag vor den "+mkDe+" im "+deM};
+  return {lat:"ante diem "+toRoman(count)+" "+mk+" "+accM,abbr:"a. d. "+toRoman(count)+" "+mkAbbr+" "+abbrM,de:"der "+count+". Tag vor den "+mkDe+" im "+deM+" (der Fixtag zählt mit)"};
+}
+/* ---------- Sprüche ---------- */
+const PROV=[
+ {w:[["Carpe","nutze (wörtlich: pflücke)"],["diem","den Tag"]],de:"Nutze den Tag."},
+ {w:[["Veni,","ich kam"],["vidi,","ich sah"],["vici","ich siegte"]],de:"Ich kam, ich sah, ich siegte."},
+ {w:[["Errare","sich irren"],["humanum","menschlich"],["est","ist"]],de:"Irren ist menschlich."},
+ {w:[["Cogito,","ich denke"],["ergo","also"],["sum","ich bin"]],de:"Ich denke, also bin ich."},
+ {w:[["Alea","der Würfel"],["iacta","geworfen"],["est","ist"]],de:"Der Würfel ist gefallen (wörtlich: geworfen)."},
+ {w:[["Per","durch"],["aspera","das Raue, Schwierige"],["ad","zu"],["astra","den Sternen"]],de:"Durch das Raue zu den Sternen."},
+ {w:[["Non","nicht"],["scholae,","für die Schule"],["sed","sondern"],["vitae","für das Leben"],["discimus","lernen wir"]],de:"Nicht für die Schule, sondern für das Leben lernen wir."},
+ {w:[["Panem","Brot"],["et","und"],["circenses","Zirkusspiele"]],de:"Brot und Spiele."},
+ {w:[["Mens","Geist"],["sana","gesund"],["in","in"],["corpore","Körper"],["sano","gesund"]],de:"Ein gesunder Geist in einem gesunden Körper."}
+];
+/* ---------- Götter und Wochentage ---------- */
+const DAYS=[
+ {lat:"dies Solis",de:"Sonntag",god:"Sol",fact:"Sol war der römische Sonnengott. Auch im Englischen steckt die Sonne im Tag: Sunday."},
+ {lat:"dies Lunae",de:"Montag",god:"Luna",fact:"Luna war die Mondgöttin. Montag heißt Mond-Tag, englisch Monday."},
+ {lat:"dies Martis",de:"Dienstag",god:"Mars",fact:"Mars war der Kriegsgott. Im Französischen lebt er weiter: mardi."},
+ {lat:"dies Mercurii",de:"Mittwoch",god:"Merkur",fact:"Merkur war der Götterbote. Französisch heißt der Tag mercredi. Das deutsche Mittwoch bedeutet dagegen einfach „Mitte der Woche“."},
+ {lat:"dies Iovis",de:"Donnerstag",god:"Jupiter",fact:"Jupiter war der oberste Gott, der Herr des Himmels und des Donners. Das deutsche Donnerstag erinnert an den Donnergott Donar. Französisch: jeudi."},
+ {lat:"dies Veneris",de:"Freitag",god:"Venus",fact:"Venus war die Göttin der Liebe. Französisch: vendredi. Das deutsche Freitag geht auf die germanische Göttin Frija zurück."},
+ {lat:"dies Saturni",de:"Samstag",god:"Saturn",fact:"Saturn war der Gott der Aussaat. Englisch: Saturday. Das deutsche Samstag kommt dagegen vom jüdischen Sabbat."}
+];
+/* ---------- Fremdwörter ---------- */
+const LAT_WORDS=[["Fenster","fenestra"],["Mauer","murus"],["Straße","strata"],["Wein","vinum"],["Käse","caseus"],["Keller","cellarium"],["Münze","moneta"],["Schule","schola"],["Spiegel","speculum"],["Pfund","pondus"],["Kreuz","crux"],["Mühle","molina"],["Kaiser","Caesar"],["Tafel","tabula"],["Pfeffer","piper"],["Birne","pirum"],["Pflaume","prunum"],["Sack","saccus"],["Pforte","porta"]];
+const GERM_WORDS=["Haus","Hund","Baum","Hand","Fuß","Wald","Berg","Brot","Stein","Bär","Fisch","Apfel","Hase","Kuh"];
+const $=id=>document.getElementById(id);
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+let ich=null,femaleForm=false,formTouched=false,sharedCert=null;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]]}return a}
+const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
+
+/* ---------- Rallye ---------- */
+const STATIONS=[["geb","Geburtstag","geburtstag"],["name","Name","name"],["satz","Satzbau","satzbau"],["kal","Kalender","kalender"],["spruch","Sprüche","sprueche"],["spiel","Spiele","quiz"]];
+const done=new Set();let bestScore=-1,gamesDone=0;
+function mark(id){if(done.has(id))return;done.add(id);renderRally()}
+function renderRally(){
+  const box=$("stations");box.textContent="";
+  for(const [id,label,tab] of STATIONS){
+    const ok=done.has(id);
+    const b=el("button","st"+(ok?" done":""));b.type="button";
+    b.append(el("i"),document.createTextNode(label));
+    b.setAttribute("aria-label",label+(ok?", geschafft":", noch offen"));
+    b.addEventListener("click",()=>openTab(tab));box.append(b);
+  }
+  $("rText").textContent="Rallye: "+done.size+" von "+STATIONS.length+" Stationen";
+  const m=$("rMsg");m.textContent="";
+  if(done.size===STATIONS.length){
+    m.append("Alle Stationen geschafft. ");
+    const a=el("button","st done","Zur Urkunde");a.type="button";a.addEventListener("click",()=>openTab("urkunde"));m.append(a);
+  }
+}
+renderRally();
+
+/* ---------- Reiter ---------- */
+const TABS=["geburtstag","zahlen","name","satzbau","sprachen","kalender","sprueche","quiz","zeichen","urkunde","einstellungen"];
+function openTab(name,fromHash){
+  if(!TABS.includes(name))name="geburtstag";
+  for(const t of TABS){
+    const on=t===name;
+    const b=$("t-"+t);b.setAttribute("aria-selected",on?"true":"false");b.tabIndex=on?0:-1;
+    $("p-"+t).hidden=!on;
+  }
+  if(name==="urkunde")renderCert();
+  if(!fromHash){try{history.replaceState(null,"","#"+name)}catch(e){location.hash=name}}
+}
+document.querySelectorAll(".tab").forEach(b=>{
+  b.addEventListener("click",()=>openTab(b.dataset.tab));
+  b.addEventListener("keydown",e=>{
+    const i=TABS.indexOf(b.dataset.tab);let j=null;
+    if(e.key==="ArrowRight")j=(i+1)%TABS.length;
+    if(e.key==="ArrowLeft")j=(i+TABS.length-1)%TABS.length;
+    if(j!==null){e.preventDefault();openTab(TABS[j]);$("t-"+TABS[j]).focus()}
+  });
+});
+window.addEventListener("hashchange",()=>{if(!sharedCert)openTab(location.hash.slice(1),true)});
+
+/* ---------- Geburtstag ---------- */
+const dd=$("dd"),mm=$("mm"),yy=$("yy"),dOut=$("dOut"),dMsg=$("dMsg"),dLat=$("dLat"),dCards=$("dCards");
+function dateFail(text){dOut.textContent="–";dMsg.textContent=text;dLat.textContent="";dCards.textContent=""}
+function renderDate(){
+  const d=parseInt(dd.value,10),m=parseInt(mm.value,10),y=parseInt(yy.value,10);
+  const p=dateProblem(d,m,y);
+  if(p){dateFail(p);return}
+  dMsg.textContent="";
+  dOut.textContent=fmtDate(d,m,y);
+  dCards.textContent="";
+  for(const [k,r,a] of [["Tag",toRoman(d),String(d)],["Monat",toRoman(m),String(m)],["Jahr",toRoman(y),String(y)]]){
+    const li=el("li");li.append(el("span","k",k),el("span","r",r),el("span","a",a));dCards.append(li);
+  }
+  dLat.textContent="";
+  const lat=el("span");
+  lat.append("Auf Latein: Monat ",el("em",null,LAT_MONTHS[m-1]));
+  if(y>=1600){const w=weekday(d,m,y);lat.append(", Wochentag ",el("em",null,LAT_DAYS[w])," ("+DE_DAYS[w]+")")}
+  dLat.append(lat);
+  if(ich){const l2=el("span");l2.append("Dies natalis ",el("em",null,ich.gen)," heißt: der Geburtstag von "+ich.de+".");dLat.append(el("br"),l2)}
+}
+for(const [inp,len] of [[dd,2],[mm,2],[yy,4]]){
+  inp.addEventListener("input",()=>{inp.value=inp.value.replace(/\D/g,"").slice(0,len);renderDate();if(!dateProblem(parseInt(dd.value,10),parseInt(mm.value,10),parseInt(yy.value,10)))mark("geb")});
+  inp.addEventListener("focus",()=>inp.select());
+}
+renderDate();
+
+/* ---------- Zahlen ---------- */
+const inp=$("zahl"),out=$("out"),rl=$("rlabel"),msg=$("meldung"),parts=$("teile"),sum=$("rechnung");
+function show(n,fromNum){
+  parts.textContent="";msg.textContent="";
+  rl.textContent=fromNum?"römisch":"als Zahl";
+  out.textContent=fromNum?toRoman(n):String(n);
+  const t=tokens(n);
+  for(const [r,v] of t){
+    const li=el("li");
+    li.append(el("span","sym",r),el("span","val",r.length===2?v+" ("+SUB[r]+")":String(v)));
+    parts.append(li);
+  }
+  sum.textContent=t.length>1?t.map(x=>x[1]).join(" + ")+" = "+n:"";
+}
+function fail(text){parts.textContent="";sum.textContent="";out.textContent="–";msg.textContent=text;rl.textContent="Ergebnis"}
+function update(){
+  const raw=inp.value.trim();
+  if(!raw){fail("Gib eine Zahl ein, zum Beispiel ein Jahr.");return}
+  if(/^\d+$/.test(raw)){
+    const n=parseInt(raw,10);
+    if(n===0){fail("Die Römer hatten keine Null. Probier eine Zahl ab 1.");return}
+    if(n>3999){fail("Mit den einfachen Zeichen kommst du bis 3999 (MMMCMXCIX).");return}
+    show(n,true);return;
+  }
+  const n=fromRoman(raw);
+  if(n===null){fail("Das ist keine gültige römische Zahl. Erlaubt sind I, V, X, L, C, D und M, jedes höchstens dreimal hintereinander.");return}
+  show(n,false);
+}
+inp.addEventListener("input",update);
+document.querySelectorAll(".ex").forEach(b=>b.addEventListener("click",()=>{inp.value=b.dataset.v;update()}));
+update();
+
+
+/* ---------- Name ---------- */
+const nOut=$("nOut"),nMsg=$("nMsg"),nCards=$("nCards"),nCases=$("nCases"),nNote=$("nNote");
+let salt=0;
+function card3(list,li,k,v,s){const x=el("li");x.append(el("span","k",k),el("span","r",v),el("span","a",s));list.append(x)}
+function renderName(){
+  nCards.textContent="";nCases.textContent="";nNote.textContent="";
+  if(!ich){nOut.textContent="–";nMsg.textContent="Trag oben deinen Vornamen ein.";return}
+  nMsg.textContent="";
+  const r=romanFull(ich,salt);
+  nOut.textContent=r.full;
+  if(r.prae)card3(nCards,null,"Vorname",r.prae,"praenomen");
+  card3(nCards,null,"Familie",r.gens,"nomen");
+  card3(nCards,null,"Beiname",r.cogn,"cognomen: dein Name");
+  card3(nCases,null,"wer?",ich.nom,"Nominativ");
+  card3(nCases,null,"wessen?",ich.gen,"Genitiv");
+  card3(nCases,null,"wen?",ich.acc,"Akkusativ");
+  nNote.textContent=(ich.female?"Römische Frauen trugen meist nur den Familiennamen und manchmal einen Beinamen. ":"")+"Das Würfeln ist ein Spiel. Die Endungen deines Namens folgen einfachen Regeln und sind keine echte Übersetzung.";
+}
+$("reroll").addEventListener("click",()=>{salt++;renderName()});
+
+/* ---------- Sprachen ---------- */
+let wi=0;
+const wordChips=$("wordChips"),tree=$("tree");
+function renderTree(){
+  const w=WORDS[wi];
+  $("laWord").textContent=w.la;
+  $("laDe").textContent="= "+w.de;
+  tree.textContent="";
+  for(const [k,name] of LANGS){
+    const li=el("li");li.append(el("span","ln",name));
+    const f=w[k];
+    if(f===null){li.append(el("span","lw none","anderes Wort"))}
+    else{
+      const mask=matchMask(w.la,f),sp=el("span","lw");
+      [...f].forEach((ch,i)=>sp.append(el("span",mask[i]?"k":"x",ch)));
+      li.append(sp);
+    }
+    tree.append(li);
+  }
+  $("dtLine").textContent=DT[w.la]?"Auch bei uns: "+DT[w.la]:"";
+  wordChips.querySelectorAll(".chip").forEach((c,i)=>c.setAttribute("aria-pressed",i===wi?"true":"false"));
+}
+WORDS.forEach((w,i)=>{const b=el("button","chip",w.de);b.type="button";b.addEventListener("click",()=>{wi=i;renderTree()});wordChips.append(b)});
+$("rndWord").addEventListener("click",()=>{let n;do{n=rnd(0,WORDS.length-1)}while(n===wi);wi=n;renderTree()});
+renderTree();
+
+/* ---------- Satzbau ---------- */
+let sel=[];
+function defaultSel(){return ich?[ich.nom,ich.female?"puerum":"puellam","videt"]:["puella","puerum","videt"]}
+function renderSatz(){
+  const s=$("sentence");s.textContent="";
+  if(!sel.length)s.append(el("span","hint","Tippe oben drei Wörter an."));
+  for(const w of sel)s.append(el("span","pill "+role(w),w));
+  const t=translate(sel);const tr=$("sTrans"),od=$("sOrder");
+  if(t.state==="ok"){tr.textContent=t.text;od.textContent="Reihenfolge: "+t.order+". Im Latein ändert sie nichts am Sinn."}
+  else if(t.state==="bad"){tr.textContent="";od.textContent="Du brauchst genau ein Wort für wer?, eines für wen? und ein Verb."}
+  else{tr.textContent="";od.textContent=sel.length?"Noch "+(3-sel.length)+" Wort"+(3-sel.length===1?"":"er")+" fehlt.":""}
+  document.querySelectorAll("#chS .chip,#chO .chip,#chV .chip").forEach(c=>c.setAttribute("aria-pressed",sel.includes(c.dataset.w)?"true":"false"));
+  $("shuf").disabled=sel.length<2;
+}
+function chipFor(w,box,mine){
+  const b=el("button","chip lat"+(mine?" mine":""),w);b.type="button";b.dataset.w=w;b.setAttribute("aria-pressed","false");
+  b.addEventListener("click",()=>{const i=sel.indexOf(w);if(i>=0)sel.splice(i,1);else if(sel.length<3)sel.push(w);renderSatz()});
+  box.append(b);
+}
+function buildChips(){
+  for(const [id,obj,mine] of [["chS",NOM,ich&&ich.nom],["chO",ACC,ich&&ich.acc],["chV",VERB,null]]){
+    const box=$(id);box.textContent="";
+    if(mine)chipFor(mine,box,true);
+    for(const w of Object.keys(obj))if(w!==mine)chipFor(w,box,false);
+  }
+}
+function resetSatz(){sel=defaultSel();renderSatz()}
+$("shuf").addEventListener("click",()=>{const before=sel.join();let k=0;do{shuffle(sel);k++}while(sel.join()===before&&k<10);mark("satz");renderSatz()});
+$("clr").addEventListener("click",()=>resetSatz());
+buildChips();resetSatz();
+
+/* ---------- Zeichen: die ersten zwanzig ---------- */
+for(let n=1;n<=20;n++){const li=el("li");li.append(el("span",null,String(n)),el("b",null,toRoman(n)));$("grid20").append(li)}
+
+/* ---------- Quiz ---------- */
+const LEVELS={leicht:{lo:1,hi:39,label:"Leicht (I bis XXXIX)"},mittel:{lo:40,hi:399,label:"Mittel (bis CCCXCIX)"},schwer:{lo:400,hi:3999,label:"Schwer (bis MMMCMXCIX)"}};
+const ROUNDS=8;
+const qEl=$("quiz");
+let st=null;
+function makeQ(lv){
+  const {lo,hi}=LEVELS[lv];
+  const n=rnd(lo,hi);
+  const steps=shuffle([1,-1,10,-10,5,-5,100,-100,50,-50]);
+  const set=new Set();
+  for(const s of steps){const m=n+s;if(m>=lo&&m<=hi&&m!==n)set.add(m);if(set.size===3)break}
+  while(set.size<3){const m=rnd(lo,hi);if(m!==n)set.add(m)}
+  return {n,nums:shuffle([n,...set]),toArabic:Math.random()<0.5};
+}
+function levelMenu(){
+  qEl.textContent="";
+  const row=el("div","levels");
+  for(const k of Object.keys(LEVELS)){
+    const b=el("button","btn",LEVELS[k].label);b.type="button";
+    b.addEventListener("click",()=>start(k));row.append(b);
+  }
+  qEl.append(el("p","qtext","Acht Fragen. Such dir eine Stufe aus:"),row);
+}
+function start(lv){st={lv,i:0,score:0,qs:Array.from({length:ROUNDS},()=>makeQ(lv)),done:false};ask()}
+function ask(){
+  const q=st.qs[st.i];st.done=false;qEl.textContent="";
+  const head=el("div","qhead");head.append(el("span",null,"Frage "+(st.i+1)+" von "+ROUNDS),el("span",null,"Punkte: "+st.score));
+  const t=el("p","qtext",q.toArabic?"Welche Zahl ist das?":"Wie schreibt man diese Zahl römisch?");
+  const big=el("p","qbig",q.toArabic?toRoman(q.n):String(q.n));
+  const opts=el("div","opts");
+  for(const m of q.nums){
+    const b=el("button","opt"+(q.toArabic?"":" rom"),q.toArabic?String(m):toRoman(m));b.type="button";b.dataset.n=m;
+    b.addEventListener("click",()=>answer(b,q));opts.append(b);
+  }
+  const fb=el("p","fb");fb.id="fb";fb.setAttribute("aria-live","polite");
+  const act=el("div","actions");act.id="act";
+  qEl.append(head,t,big,opts,fb,act);
+}
+function answer(btn,q){
+  if(st.done)return;st.done=true;
+  const ok=Number(btn.dataset.n)===q.n;if(ok)st.score++;
+  qEl.querySelectorAll(".opt").forEach(o=>{
+    o.disabled=true;
+    if(Number(o.dataset.n)===q.n)o.classList.add("right");else if(o===btn)o.classList.add("wrong");
+  });
+  const fb=$("fb");fb.textContent="";
+  fb.append(el("strong",ok?"ok":"no",ok?"Richtig. ":"Nicht ganz. "),document.createTextNode(explain(q.n)));
+  const nx=el("button","btn",st.i+1<ROUNDS?"Weiter":"Ergebnis zeigen");nx.type="button";
+  nx.addEventListener("click",()=>{st.i++;st.i<ROUNDS?ask():finish()});
+  $("act").append(nx);nx.focus();
+}
+function finish(){
+  gameDone(st.score);
+  qEl.textContent="";
+  const who=ich?", "+ich.de:"";const m=st.score>=7?"Optime"+who+"! (Bestens!) Du rechnest wie ein Römer.":st.score>=4?"Bene"+who+"! (Gut!) Das war schon ziemlich römisch.":"Iterum conare"+who+"! (Versuch es noch einmal!) Mit etwas Übung klappt es.";
+  const act=el("div","actions");
+  const a=el("button","btn","Nochmal, gleiche Stufe");a.type="button";a.addEventListener("click",()=>start(st.lv));
+  const b=el("button","btn ghost","Andere Stufe");b.type="button";b.addEventListener("click",levelMenu);
+  act.append(a,b);qEl.append(el("p","score",st.score+" von "+ROUNDS),el("p","qtext",m),act);
+}
+levelMenu();
+
+/* ---------- Kalender ---------- */
+const kd=$("kd"),km=$("km"),ky=$("ky");
+function renderKal(user){
+  const d=parseInt(kd.value,10),m=parseInt(km.value,10),y=parseInt(ky.value,10);
+  const p=dateProblem(d,m,y);
+  const info=$("kInfo");info.textContent="";
+  if(p){$("kOut").textContent="–";$("kAbbr").textContent="";$("kDe").textContent="";$("kMsg").textContent=p;return}
+  $("kMsg").textContent="";
+  const r=romanDate(d,m,y);
+  $("kOut").textContent=r.lat;$("kAbbr").textContent="Kurz geschrieben: "+r.abbr;$("kDe").textContent="Auf Deutsch: "+r.de+".";
+  const ni=nonesIdes(m);
+  info.append(el("p",null,"Im "+MON_DE[m-1]+" liegen die Nonen am "+ni.nonae+". und die Iden am "+ni.idus+". Die Kalenden sind immer der 1."));
+  if(y+753<=3999)info.append(el("p",null,"Das Jahr: a. u. c. "+toRoman(y+753)+" (ab urbe condita, seit der Gründung Roms im Jahr 753 v. Chr.)"));
+  if(d===15&&m===3)info.append(el("p",null,"An den Iden des März wurde Caesar ermordet, im Jahr 44 v. Chr."));
+  if(user)mark("kal");
+}
+for(const [i,len] of [[kd,2],[km,2],[ky,4]]){
+  i.addEventListener("input",()=>{i.value=i.value.replace(/\D/g,"").slice(0,len);renderKal(true)});
+  i.addEventListener("focus",()=>i.select());
+}
+function setKal(d,m,y){kd.value=String(d);km.value=String(m);ky.value=String(y);renderKal(true)}
+$("kCaesar").addEventListener("click",()=>{const y=parseInt(ky.value,10);setKal(15,3,y>=1&&y<=3999?y:2026)});
+$("kToday").addEventListener("click",()=>{const n=new Date();setKal(n.getDate(),n.getMonth()+1,n.getFullYear())});
+$("kBirth").addEventListener("click",()=>{
+  const d=parseInt(dd.value,10),m=parseInt(mm.value,10),y=parseInt(yy.value,10);
+  if(dateProblem(d,m,y)){$("kMsg").textContent="Trag zuerst im Reiter Geburtstag ein gültiges Datum ein.";return}
+  setKal(d,m,y);
+});
+renderKal(false);
+
+/* ---------- Sprüche ---------- */
+const dayOfYear=Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/864e5);
+let pi=dayOfYear%PROV.length,pSeen=new Set(),pLast=null,pFull=false;
+function renderProv(){
+  const p=PROV[pi];
+  $("pvNr").textContent="Spruch "+(pi+1)+" von "+PROV.length;
+  $("pvCount").textContent=pSeen.size+" von "+p.w.length+" Wörtern angetippt";
+  const box=$("pv");box.textContent="";
+  p.w.forEach(([w],i)=>{
+    const b=el("button","chip lat",w);b.type="button";b.setAttribute("aria-pressed",pSeen.has(i)?"true":"false");
+    b.addEventListener("click",()=>{pSeen.add(i);pLast=i;renderProv()});box.append(b);
+  });
+  $("pvMean").textContent=pLast===null?"Tippe ein Wort an.":p.w[pLast][0].replace(/[,.]/g,"")+" = "+p.w[pLast][1];
+  $("pvDe").textContent=pFull?"„"+p.de+"“":"";
+  $("pvFull").disabled=pFull;
+}
+function newProv(n){pi=n;pSeen=new Set();pLast=null;pFull=false;renderProv()}
+$("pvFull").addEventListener("click",()=>{pFull=true;renderProv();mark("spruch")});
+$("pvNext").addEventListener("click",()=>newProv((pi+1)%PROV.length));
+$("pvRnd").addEventListener("click",()=>{let n;do{n=rnd(0,PROV.length-1)}while(n===pi);newProv(n)});
+renderProv();
+
+/* ---------- Spiele ---------- */
+function praise(score,n){const who=ich?", "+ich.de:"";return score>=n-1?"Optime"+who+"! (Bestens!)":score>=Math.ceil(n/2)?"Bene"+who+"! (Gut!)":"Iterum conare"+who+"! (Versuch es noch einmal!)"}
+function gameDone(score){bestScore=Math.max(bestScore,score);gamesDone++;mark("spiel")}
+function makeGame(boxId,cfg){
+  const box=$(boxId);let s=null;
+  function menu(){
+    s=null;box.textContent="";
+    const b=el("button","btn","Los geht’s");b.type="button";b.addEventListener("click",start);
+    const row=el("div","levels");row.append(b);
+    box.append(el("p","qtext",cfg.intro),row);
+  }
+  function start(){
+    const qs=[],seen=new Set();let tries=0;
+    while(qs.length<cfg.rounds&&tries<200){tries++;const q=cfg.make();const key=q.options[q.correct];if(seen.has(key))continue;seen.add(key);qs.push(q)}
+    s={i:0,score:0,qs,done:false};ask();
+  }
+  function ask(){
+    const q=s.qs[s.i];s.done=false;box.textContent="";
+    const head=el("div","qhead");head.append(el("span",null,"Frage "+(s.i+1)+" von "+s.qs.length),el("span",null,"Punkte: "+s.score));
+    box.append(head,el("p","qtext",q.prompt));
+    if(q.big)box.append(el("p","qbig",q.big));
+    const opts=el("div","opts");
+    q.options.forEach((o,idx)=>{
+      const b=el("button","opt"+(q.rom?" rom":""),o);b.type="button";b.dataset.i=idx;
+      b.addEventListener("click",()=>answer(b,q,idx));opts.append(b);
+    });
+    const fb=el("p","fb");fb.id=boxId+"-fb";fb.setAttribute("aria-live","polite");
+    const act=el("div","actions");act.id=boxId+"-act";
+    box.append(opts,fb,act);
+  }
+  function answer(btn,q,idx){
+    if(s.done)return;s.done=true;const ok=idx===q.correct;if(ok)s.score++;
+    box.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(Number(o.dataset.i)===q.correct)o.classList.add("right");else if(o===btn)o.classList.add("wrong")});
+    const fb=$(boxId+"-fb");fb.textContent="";
+    fb.append(el("strong",ok?"ok":"no",ok?"Richtig. ":"Nicht ganz. "),document.createTextNode(q.explain));
+    const nx=el("button","btn",s.i+1<s.qs.length?"Weiter":"Ergebnis zeigen");nx.type="button";
+    nx.addEventListener("click",()=>{s.i++;s.i<s.qs.length?ask():finish()});
+    $(boxId+"-act").append(nx);nx.focus();
+  }
+  function finish(){
+    gameDone(s.score);box.textContent="";
+    const n=s.qs.length;
+    const act=el("div","actions");
+    const a=el("button","btn","Nochmal");a.type="button";a.addEventListener("click",start);act.append(a);
+    box.append(el("p","score",s.score+" von "+n),el("p","qtext",praise(s.score,n)),act);
+  }
+  menu();
+  return {menu};
+}
+function makeRechnen(){
+  let a,b,r,op;
+  if(Math.random()<0.6){a=rnd(1,60);b=rnd(1,60);r=a+b;op="+"}else{a=rnd(10,99);b=rnd(1,a-1);r=a-b;op="−"}
+  const set=new Set();
+  for(const s of shuffle([1,-1,10,-10,5,-5,2,-2])){const x=r+s;if(x>=1&&x!==r)set.add(x);if(set.size===3)break}
+  const nums=shuffle([r,...set]);
+  const sum=toRoman(a)+" "+op+" "+toRoman(b);
+  return {prompt:"Rechne römisch und wähle das richtige Ergebnis:",big:sum,options:nums.map(toRoman),correct:nums.indexOf(r),rom:true,explain:sum+" = "+toRoman(r)+" ("+a+" "+op+" "+b+" = "+r+")"};
+}
+function makeWort(){
+  const [de,la]=LAT_WORDS[rnd(0,LAT_WORDS.length-1)];
+  const opts=shuffle([de,...shuffle(GERM_WORDS.slice()).slice(0,3)]);
+  return {prompt:"Welches dieser Wörter kommt aus dem Lateinischen?",big:"",options:opts,correct:opts.indexOf(de),explain:de+" kommt vom lateinischen „"+la+"“."};
+}
+function makeGott(){
+  const dy=DAYS[rnd(0,DAYS.length-1)];
+  const opts=shuffle([dy,...shuffle(DAYS.filter(x=>x!==dy)).slice(0,3)]);
+  if(Math.random()<0.5)return {prompt:"Welcher römische Gott steckt im "+dy.de+"?",big:"",options:opts.map(x=>x.god),correct:opts.indexOf(dy),explain:dy.fact};
+  return {prompt:"Wie heißt der "+dy.de+" auf Latein?",big:"",options:opts.map(x=>x.lat),correct:opts.indexOf(dy),explain:dy.lat+": "+dy.fact};
+}
+const gRechnen=makeGame("gv-rechnen",{rounds:8,make:makeRechnen,intro:"Acht Aufgaben in römischen Zahlen. Wähle jeweils das richtige Ergebnis."});
+const gWort=makeGame("gv-wort",{rounds:8,make:makeWort,intro:"Acht Fragen. Viele deutsche Wörter stammen aus dem Lateinischen, man erkennt es ihnen nur nicht an."});
+const gGott=makeGame("gv-gott",{rounds:8,make:makeGott,intro:"Acht Fragen zu den Göttern hinter unseren Wochentagen."});
+const GAMES=["zahlen","rechnen","wort","gott"];
+function showGame(g){
+  for(const k of GAMES)$("gv-"+k).hidden=k!==g;
+  document.querySelectorAll("#gameChips .chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.g===g?"true":"false"));
+}
+document.querySelectorAll("#gameChips .chip").forEach(c=>c.addEventListener("click",()=>showGame(c.dataset.g)));
+
+/* ---------- Einstellungen ---------- */
+const DEF={issuer:"Latein-Stand",mail:"",idle:2,large:false};
+const settings=Object.assign({},DEF);
+try{const o=JSON.parse(localStorage.getItem("latein-settings")||"null");if(o)for(const k of Object.keys(DEF))if(typeof o[k]===typeof DEF[k])settings[k]=o[k]}catch(e){}
+function saveSettings(){try{localStorage.setItem("latein-settings",JSON.stringify(settings))}catch(e){}}
+const MAILRX=/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+let unlocked=false;
+function showLock(){$("lock").hidden=unlocked;$("setBox").hidden=!unlocked}
+function paintSettings(){
+  document.documentElement.classList.toggle("large",settings.large);
+  $("sLarge").setAttribute("aria-pressed",settings.large?"true":"false");
+  document.querySelectorAll("#idleChips .chip").forEach(c=>c.setAttribute("aria-pressed",Number(c.dataset.min)===settings.idle?"true":"false"));
+}
+$("sIssuer").value=settings.issuer;$("sMail").value=settings.mail;
+$("sIssuer").addEventListener("input",()=>{settings.issuer=$("sIssuer").value.slice(0,40);saveSettings()});
+$("sMail").addEventListener("input",()=>{const v=$("sMail").value.trim().slice(0,80);settings.mail=v;$("sMsg").textContent=v&&!MAILRX.test(v)?"Das sieht noch nicht wie eine E-Mail-Adresse aus.":"";saveSettings()});
+document.querySelectorAll("#idleChips .chip").forEach(c=>c.addEventListener("click",()=>{settings.idle=Number(c.dataset.min);saveSettings();paintSettings()}));
+$("sLarge").addEventListener("click",()=>{settings.large=!settings.large;saveSettings();paintSettings()});
+$("lockForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=$("pw").value.trim();
+  if(v==="123"){unlocked=true;$("pw").value="";$("pwMsg").textContent="";showLock()}
+  else $("pwMsg").textContent=v?"Das ist leider nicht das richtige Passwort.":"Bitte ein Passwort eingeben.";
+});
+$("relock").addEventListener("click",()=>{unlocked=false;showLock()});
+paintSettings();showLock();
+
+/* ---------- Urkunde ---------- */
+const vMail=$("vMail");
+function certData(){
+  const now=new Date();
+  const d=parseInt(dd.value,10),m=parseInt(mm.value,10),y=parseInt(yy.value,10);
+  const r=ich?romanFull(ich,salt):null;
+  return {
+    title:ich&&ich.female?"Civis Romana":"Civis Romanus",
+    who:ich?ich.de+" wird hiermit "+(ich.female?"zur römischen Bürgerin":"zum römischen Bürger")+" ernannt.":"Trag oben deinen Vornamen ein, dann steht er hier.",
+    name:r?r.full:"–",
+    birth:done.has("geb")&&!dateProblem(d,m,y)?fmtDate(d,m,y):"",
+    stations:done.size+" von "+STATIONS.length+" Stationen der Rallye geschafft",
+    score:bestScore>=0?"Bestes Spielergebnis: "+bestScore+" von 8":"",
+    issued:"Ausgestellt am "+fmtDate(now.getDate(),now.getMonth()+1,now.getFullYear())+(settings.issuer?" · "+settings.issuer:""),
+    contact:settings.mail?"Rückfragen: "+settings.mail:"",
+    k:done.size
+  };
+}
+/* Link zur Urkunde: alle Daten stehen im Teil hinter dem #, nichts liegt auf einem Server */
+function encodeShare(c){
+  const j=JSON.stringify({t:c.title,w:c.who,n:c.name,b:c.birth,s:c.stations,c:c.score,i:c.issued,k:c.contact,d:c.k});
+  return btoa(unescape(encodeURIComponent(j))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+}
+function decodeShare(hash){
+  const m=/^u=([A-Za-z0-9_-]{10,3000})$/.exec(hash);if(!m)return null;
+  try{
+    let b=m[1].replace(/-/g,"+").replace(/_/g,"/");while(b.length%4)b+="=";
+    const o=JSON.parse(decodeURIComponent(escape(atob(b))));
+    const s=(v,n)=>typeof v==="string"?v.slice(0,n):"";
+    return {title:s(o.t,30),who:s(o.w,160),name:s(o.n,80),birth:s(o.b,40),stations:s(o.s,80),score:s(o.c,60),issued:s(o.i,140),contact:s(o.k,140),k:Number.isInteger(o.d)?Math.max(0,Math.min(6,o.d)):0};
+  }catch(e){return null}
+}
+function shareLink(c){return /^https?:$/.test(location.protocol)?location.origin+location.pathname+"#u="+encodeShare(c):""}
+
+/* ---- Zeichnen ---- */
+const CW=1240,CH=1754;
+function meanderBand(g,x0,y,w,u){
+  g.strokeStyle="#D9A441";g.lineWidth=3;g.lineJoin="miter";let x=x0;
+  while(x+6*u<=x0+w){
+    g.beginPath();g.moveTo(x,y+5*u);g.lineTo(x,y);g.lineTo(x+5*u,y);g.lineTo(x+5*u,y+4*u);g.lineTo(x+2*u,y+4*u);g.lineTo(x+2*u,y+2*u);g.lineTo(x+3*u,y+2*u);g.stroke();
+    g.beginPath();g.moveTo(x+5*u,y+5*u);g.lineTo(x+6*u,y+5*u);g.stroke();x+=6*u;
+  }
+}
+function spaced(g,text,cx,y,sp){
+  let w=0;for(const ch of text)w+=g.measureText(ch).width+sp;w-=sp;
+  let x=cx-w/2;g.textAlign="left";for(const ch of text){g.fillText(ch,x,y);x+=g.measureText(ch).width+sp}g.textAlign="center";
+}
+function fitFont(g,text,weight,family,maxPx,minPx,maxW){
+  let s=maxPx;do{g.font=weight+" "+s+"px "+family;if(g.measureText(text).width<=maxW)break;s-=2}while(s>minPx);return s;
+}
+function wrapLines(g,text,maxW){
+  const lines=[];let cur="";
+  for(const w of text.split(/\s+/)){const t=cur?cur+" "+w:w;if(g.measureText(t).width>maxW&&cur){lines.push(cur);cur=w}else cur=t}
+  if(cur)lines.push(cur);return lines;
+}
+function ornament(g,cx,y,col){
+  g.strokeStyle=col;g.fillStyle=col;g.lineWidth=3;
+  g.beginPath();g.moveTo(cx-260,y);g.lineTo(cx-26,y);g.moveTo(cx+26,y);g.lineTo(cx+260,y);g.stroke();
+  g.beginPath();g.moveTo(cx,y-12);g.lineTo(cx+12,y);g.lineTo(cx,y+12);g.lineTo(cx-12,y);g.closePath();g.fill();
+}
+function drawSeal(g,cx,cy,r,DISP){
+  g.fillStyle="#A93B26";
+  g.beginPath();g.moveTo(cx-r*0.55,cy+r*0.6);g.lineTo(cx-r*0.95,cy+r*1.7);g.lineTo(cx-r*0.4,cy+r*1.4);g.lineTo(cx-r*0.1,cy+r*1.75);g.lineTo(cx+r*0.1,cy+r*0.8);g.closePath();g.fill();
+  g.beginPath();g.moveTo(cx+r*0.55,cy+r*0.6);g.lineTo(cx+r*0.95,cy+r*1.7);g.lineTo(cx+r*0.4,cy+r*1.4);g.lineTo(cx+r*0.1,cy+r*1.75);g.lineTo(cx-r*0.1,cy+r*0.8);g.closePath();g.fill();
+  const gr=g.createRadialGradient(cx-r*0.3,cy-r*0.3,r*0.1,cx,cy,r);gr.addColorStop(0,"#F3D685");gr.addColorStop(1,"#C48F2A");
+  g.fillStyle=gr;g.beginPath();g.arc(cx,cy,r,0,Math.PI*2);g.fill();
+  g.strokeStyle="#A93B26";g.lineWidth=5;g.beginPath();g.arc(cx,cy,r-12,0,Math.PI*2);g.stroke();
+  g.lineWidth=2;g.beginPath();g.arc(cx,cy,r-26,0,Math.PI*2);g.stroke();
+  g.fillStyle="#7A2616";g.font="700 40px "+DISP;g.textAlign="center";g.fillText("ROMA",cx,cy+14);
+}
+async function drawCertCanvas(c){
+  try{await Promise.all([document.fonts.load('700 60px Cinzel'),document.fonts.load('500 30px Inter'),document.fonts.load('italic 400 30px Inter')])}catch(e){}
+  const cv=document.createElement("canvas");cv.width=CW;cv.height=CH;
+  const g=cv.getContext("2d");
+  const DISP='Cinzel,"Times New Roman",Georgia,serif',TXT='Inter,Arial,Helvetica,sans-serif';
+  const TERRA="#A93B26",GOLD="#D9A441",INK="#3A2A22",MUTE="#6E5E54";
+  g.fillStyle="#F7EFDD";g.fillRect(0,0,CW,CH);
+  const gr=g.createRadialGradient(CW/2,CH/2,CH*0.3,CW/2,CH/2,CH*0.78);gr.addColorStop(0,"rgba(255,255,255,0)");gr.addColorStop(1,"rgba(217,164,65,0.24)");
+  g.fillStyle=gr;g.fillRect(0,0,CW,CH);
+  g.strokeStyle=TERRA;g.lineWidth=14;g.strokeRect(48,48,CW-96,CH-96);
+  g.strokeStyle=GOLD;g.lineWidth=4;g.strokeRect(76,76,CW-152,CH-152);
+  meanderBand(g,112,118,CW-224,7);meanderBand(g,112,CH-118-35,CW-224,7);
+  g.textAlign="center";g.textBaseline="alphabetic";
+  g.fillStyle=MUTE;g.font="600 30px "+TXT;spaced(g,"URKUNDE",CW/2,310,14);
+  g.fillStyle=TERRA;fitFont(g,c.title,"700",DISP,112,60,900);g.fillText(c.title,CW/2,440);
+  ornament(g,CW/2,500,GOLD);
+  g.fillStyle=INK;g.font="400 36px "+TXT;
+  let y=585;for(const ln of wrapLines(g,c.who,860)){g.fillText(ln,CW/2,y);y+=52}
+  y+=70;g.fillStyle=INK;fitFont(g,c.name,"700",DISP,96,40,980);g.fillText(c.name,CW/2,y);
+  y+=70;
+  for(let i=0;i<6;i++){
+    const x=CW/2-5*28+i*56;
+    g.beginPath();g.arc(x,y,15,0,Math.PI*2);
+    if(i<c.k){g.fillStyle=GOLD;g.fill();g.strokeStyle=TERRA;g.lineWidth=3;g.stroke()}else{g.strokeStyle=GOLD;g.lineWidth=3;g.stroke()}
+  }
+  y+=70;g.fillStyle=MUTE;g.font="400 34px "+TXT;
+  const info=[];if(c.birth)info.push("Dies natalis: "+c.birth);info.push(c.stations);if(c.score)info.push(c.score);
+  for(const t of info){g.fillText(t,CW/2,y);y+=52}
+  drawSeal(g,CW/2,1290,95,DISP);
+  g.fillStyle=MUTE;g.font="italic 400 28px "+TXT;let fy=1545;
+  for(const t of [c.issued,c.contact].filter(Boolean))for(const ln of wrapLines(g,t,900)){g.fillText(ln,CW/2,fy);fy+=40}
+  return cv;
+}
+
+/* ---- PDF ohne Bibliothek: eine A4-Seite mit dem Bild ---- */
+function jpegBytes(cv){
+  const bin=atob(cv.toDataURL("image/jpeg",0.92).split(",")[1]);
+  const u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u;
+}
+function makePdf(jpg,w,h){
+  const enc=new TextEncoder(),chunks=[],offs=[];let pos=0;
+  const add=x=>{const b=typeof x==="string"?enc.encode(x):x;chunks.push(b);pos+=b.length};
+  const obj=(n,body)=>{offs[n]=pos;add(n+" 0 obj\n"+body+"\nendobj\n")};
+  add("%PDF-1.4\n");
+  obj(1,"<< /Type /Catalog /Pages 2 0 R >>");
+  obj(2,"<< /Type /Pages /Kids [3 0 R] /Count 1 >>");
+  obj(3,"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>");
+  offs[4]=pos;add("4 0 obj\n<< /Type /XObject /Subtype /Image /Width "+w+" /Height "+h+" /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length "+jpg.length+" >>\nstream\n");add(jpg);add("\nendstream\nendobj\n");
+  const content="q 595.28 0 0 841.89 0 0 cm /Im0 Do Q";
+  obj(5,"<< /Length "+content.length+" >>\nstream\n"+content+"\nendstream");
+  obj(6,"<< /Title (Urkunde) /Producer (Latein zum Ausprobieren) >>");
+  const xref=pos;let x="xref\n0 7\n0000000000 65535 f \n";
+  for(let i=1;i<=6;i++)x+=String(offs[i]).padStart(10,"0")+" 00000 n \n";
+  add(x+"trailer\n<< /Size 7 /Root 1 0 R /Info 6 0 R >>\nstartxref\n"+xref+"\n%%EOF\n");
+  return new Blob(chunks,{type:"application/pdf"});
+}
+function blobToDataUrl(b){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(r.error);r.readAsDataURL(b)})}
+function saveBlob(blob,name){
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.hidden=true;
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+}
+function certFileName(c,ext){const n=(c.name||"Urkunde").replace(/[^A-Za-z0-9]+/g,"-").replace(/^-|-$/g,"");return "Urkunde-"+(n||"Latein")+"."+ext}
+
+/* ---- Anzeige ---- */
+let certCv=null,certKey="",certSeq=0;
+function currentCert(){return sharedCert||certData()}
+async function ensureCanvas(){
+  const c=currentCert(),key=JSON.stringify(c);
+  if(certCv&&key===certKey)return certCv;
+  const my=++certSeq;const cv=await drawCertCanvas(c);
+  if(my===certSeq){certCv=cv;certKey=key;return cv}
+  return certCv||cv;
+}
+async function renderCertImage(){
+  const cv=await ensureCanvas();
+  $("certImg").src=cv.toDataURL("image/jpeg",0.9);$("certBusy").hidden=true;
+}
+function renderCert(){
+  $("mailCard").hidden=!!sharedCert;
+  const pan=$("p-urkunde");
+  if(pan.hidden&&!sharedCert)return;
+  $("certBusy").hidden=false;
+  renderCertImage().catch(()=>{$("certBusy").textContent="Die Urkunde konnte nicht gezeichnet werden."});
+}
+$("dlPdf").addEventListener("click",async()=>{
+  const msg=$("dlMsg");msg.textContent="";
+  try{
+    const cv=await ensureCanvas();
+    saveBlob(makePdf(jpegBytes(cv),cv.width,cv.height),certFileName(currentCert(),"pdf"));
+    msg.textContent="Das PDF wird gespeichert. Falls nichts passiert, halte das Bild oben gedrückt oder öffne es mit Rechtsklick und speichere es.";
+  }catch(e){msg.textContent="Das PDF konnte nicht erstellt werden."}
+});
+$("dlPng").addEventListener("click",async()=>{
+  const msg=$("dlMsg");msg.textContent="";
+  try{
+    const cv=await ensureCanvas();
+    cv.toBlob(b=>{if(b){saveBlob(b,certFileName(currentCert(),"png"));msg.textContent="Das Bild wird gespeichert. Falls nichts passiert, halte das Bild oben gedrückt oder öffne es mit Rechtsklick und speichere es."}else msg.textContent="Das Bild konnte nicht erstellt werden."},"image/png");
+  }catch(e){msg.textContent="Das Bild konnte nicht erstellt werden."}
+});
+
+/* ---- Mail mit PDF-Anhang (verschickt der Nutzer selbst) ---- */
+function mailText(c){
+  const L=["Hallo"+(ich?" "+ich.de:"")+",","","du hast am Latein-Stand mitgemacht. Das ist deine Urkunde:","",c.title.toUpperCase(),"Römischer Name: "+c.name];
+  if(c.birth)L.push("Dies natalis: "+c.birth);
+  L.push(c.stations);if(c.score)L.push(c.score);L.push("");
+  L.push("Die Urkunde hängt als PDF an dieser E-Mail.","",c.issued);if(c.contact)L.push(c.contact);
+  return L.join("\n");
+}
+async function certPdfBlob(){const cv=await ensureCanvas();return makePdf(jpegBytes(cv),cv.width,cv.height)}
+function canShareFiles(){
+  try{if(!navigator.share||!navigator.canShare||typeof File!=="function")return false;
+    return navigator.canShare({files:[new File([new Blob(["x"],{type:"application/pdf"})],"u.pdf",{type:"application/pdf"})]})}catch(e){return false}
+}
+const SHARE_OK=canShareFiles();
+$("shareBtn").hidden=!SHARE_OK;$("shareHint").hidden=!SHARE_OK;
+$("shareBtn").addEventListener("click",async()=>{
+  const msg=$("vMsg"),btn=$("shareBtn");
+  btn.disabled=true;msg.textContent="Das PDF wird vorbereitet …";
+  try{
+    const c=currentCert(),file=new File([await certPdfBlob()],certFileName(c,"pdf"),{type:"application/pdf"});
+    await navigator.share({files:[file],title:"Deine Urkunde: "+c.title,text:mailText(c)});
+    msg.textContent="Fertig. Prüfe im Mail-Programm, ob die Mail abgeschickt wurde.";
+  }catch(e){
+    msg.textContent=e&&e.name==="AbortError"?"":"Das Teilen hat nicht geklappt. Nutze stattdessen den Mail-Entwurf unten.";
+  }
+  btn.disabled=false;
+});
+$("draftBtn").addEventListener("click",async()=>{
+  const msg=$("vMsg"),mail=vMail.value.trim();
+  if(mail&&!MAILRX.test(mail)){msg.textContent="Die Adresse sieht noch nicht richtig aus.";return}
+  const c=currentCert();
+  try{saveBlob(await certPdfBlob(),certFileName(c,"pdf"))}catch(e){}
+  const url="mailto:"+encodeURIComponent(mail).replace(/%40/g,"@")+"?subject="+encodeURIComponent("Deine Urkunde: "+c.title)+"&body="+encodeURIComponent(mailText(c));
+  msg.textContent="Das PDF wurde gespeichert. Dein Mail-Programm sollte sich öffnen. Hänge dort das PDF an. Öffnet sich nichts, ist auf diesem Gerät kein Mail-Programm eingerichtet.";
+  (window.__openMail||(u=>{location.href=u}))(url);
+});
+vMail.addEventListener("input",()=>{$("vMsg").textContent=""});
+
+/* ---- Link-Ansicht: Seite mit #u=… zeigt nur die Urkunde ---- */
+sharedCert=decodeShare(location.hash.slice(1));
+if(sharedCert){
+  document.querySelectorAll(".band,.mdiv,footer,.idle").forEach(e=>{e.hidden=true});
+  for(const t of TABS)$("p-"+t).hidden=t!=="urkunde";
+  $("mailCard").hidden=true;$("backBox").hidden=false;
+  document.title="Deine Urkunde";
+  renderCertImage();
+}
+
+/* ---------- Automatisches Zurücksetzen ---------- */
+let lastAct=Date.now(),dirty=false;
+function bump(){lastAct=Date.now();dirty=true}
+["pointerdown","keydown","input","touchstart"].forEach(t=>document.addEventListener(t,bump,{passive:true}));
+function idleTick(){
+  const warn=$("idleWarn"),m=settings.idle;
+  if(sharedCert||!m||!dirty||document.hidden){warn.hidden=true;return}
+  const left=m*60000-(Date.now()-lastAct);
+  if(left<=0){warn.hidden=true;resetAll();return}
+  if(left<=15000){$("idleSec").textContent=String(Math.ceil(left/1000));warn.hidden=false}else warn.hidden=true;
+}
+setInterval(idleTick,1000);
+
+/* ---------- Eigener Name ---------- */
+const nameIn=$("nameIn"),nameLat=$("nameLat");
+function applyMe(){
+  const raw=nameIn.value;
+  ich=raw.trim()?latinName(raw,femaleForm):null;
+  $("fM").setAttribute("aria-pressed",femaleForm?"false":"true");
+  $("fW").setAttribute("aria-pressed",femaleForm?"true":"false");
+  nameLat.textContent="";
+  if(!raw.trim())nameLat.textContent="Trag deinen Vornamen ein. Er taucht dann in Geburtstag, Namen, Satzbau und Quiz auf.";
+  else if(!ich)nameLat.textContent="Bitte mindestens zwei Buchstaben von A bis Z.";
+  else nameLat.append("Auf Latein: ",el("em",null,ich.nom)," · wen? ",el("em",null,ich.acc)," · wessen? ",el("em",null,ich.gen));
+  setMeWords(ich);buildChips();resetSatz();renderDate();renderName();if(ich)mark("name");renderCert();
+}
+nameIn.addEventListener("input",()=>{if(!formTouched)femaleForm=guessFemale(nameIn.value);salt=0;applyMe()});
+$("fM").addEventListener("click",()=>{formTouched=true;femaleForm=false;salt=0;applyMe()});
+$("fW").addEventListener("click",()=>{formTouched=true;femaleForm=true;salt=0;applyMe()});
+applyMe();
+
+/* ---------- Zurücksetzen ---------- */
+function resetGeb(){dd.value="10";mm.value="10";yy.value="2026";renderDate()}
+function resetZahl(){inp.value="2026";update()}
+function resetName(){salt=0;renderName()}
+function resetQuiz(){st=null;levelMenu();gRechnen.menu();gWort.menu();gGott.menu();showGame("zahlen")}
+function resetAll(){
+  nameIn.value="";formTouched=false;femaleForm=false;applyMe();
+  resetGeb();resetZahl();wi=0;renderTree();resetQuiz();
+  kd.value="15";km.value="3";ky.value="2026";renderKal(false);
+  newProv(dayOfYear%PROV.length);
+  vMail.value="";$("vMsg").textContent="";unlocked=false;showLock();$("pw").value="";$("pwMsg").textContent="";
+  done.clear();bestScore=-1;gamesDone=0;renderRally();renderCert();
+  if(!sharedCert)openTab("geburtstag");
+  dirty=false;lastAct=Date.now();$("idleWarn").hidden=true;
+  try{window.scrollTo(0,0)}catch(e){}
+}
+$("rstGeb").addEventListener("click",resetGeb);
+$("rstZahl").addEventListener("click",resetZahl);
+$("rstName").addEventListener("click",resetName);
+$("rstQuiz").addEventListener("click",resetQuiz);
+$("rstAll").addEventListener("click",resetAll);
+
+if(!sharedCert)openTab(location.hash.slice(1),true);
+</script>
+
+</body></html>
